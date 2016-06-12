@@ -154,8 +154,12 @@ class FormHandler extends Model implements FormHandlerInterface
 		$output[] = "</form>";
 		$output = escapeTags($output);
 		$filename = $path . $filename . ".txt";
-		$myfile = fopen($filename, "w");
-		fwrite($myfile, $output);
+		foreach ($output as $index => $element) {
+			$myfile = fopen($filename, "a+");
+			fwrite($myfile, $element . PHP_EOL);
+			fclose($myfile);
+		}
+		
 	}
 
 	/**
@@ -203,7 +207,7 @@ class FormHandler extends Model implements FormHandlerInterface
 				$output .= $this->addAttributes($attr_to_add);
 			}
 		}		
-		$output .= ">";	
+		$output = $output . ">" . "<" . $tag . ">";	
 		$this->output[] = $output;
 	}
 
