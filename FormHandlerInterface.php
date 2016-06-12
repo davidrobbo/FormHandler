@@ -8,11 +8,11 @@ interface FormHandlerInterface
 
 	private function getStandardAttributes($tag);
 
-	public function formInitialise($attributes);
+	private function formInitialise($attributes);
 
 	public function render($filename);
 
-	public function escapeTags($output);
+	private function escapeTags($output);
 
 	public function formReorder($output);
 

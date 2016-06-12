@@ -74,7 +74,7 @@ class FormHandler extends Model implements FormHandlerInterface
 	 * and either adds provided attr
 	 * or standard set..........
 	 */
-	public function formInitialise($attributes = null)
+	private function formInitialise($attributes = null)
 	{	
 		$form = "<form";
 		if ($attributes) {
@@ -105,7 +105,7 @@ class FormHandler extends Model implements FormHandlerInterface
 	 * reduces XSS threat using
 	 * htmlspecialchars()
 	 */
-	public function escapeTags($output)
+	private function escapeTags($output)
 	{
 		$safe_output = [];
 		foreach ($output as $index => $form_element) {
@@ -138,7 +138,6 @@ class FormHandler extends Model implements FormHandlerInterface
 				$reordered_output[] = $output[$new_order[$i]-1];
 			}
 		}
-		$reordered_output[] = [$output[$num_args-1]];
 		$this->output = $reordered_output;
 	}
 
